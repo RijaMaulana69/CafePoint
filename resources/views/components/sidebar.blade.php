@@ -12,9 +12,9 @@
         </a>
 
         <div class="px-6 mt-5 text-xs uppercase text-gray-400">
-            Master
+            Master  
         </div>
-
+        
         <a href="{{ route('kategori') }}"
            class="block px-6 py-3 hover:bg-slate-800">
             Kategori

@@ -8,9 +8,12 @@ use Livewire\Component;
 class Index extends Component
 {
     public $name = '';
+
     public $description = '';
+
     public $is_active = true;
-    public $showModel = false;
+
+    public $showModal = false;
 
     protected $rules = [
         'name' => 'required|string|max:100',
@@ -20,7 +23,15 @@ class Index extends Component
 
     public function create()
     {
+        $this->resetForm();
+
+        $this->showModal = true;
+    }
+
+    public function save()
+    {
         $this->validate();
+
         Category::create([
             'name' => $this->name,
             'description' => $this->description,
@@ -28,7 +39,9 @@ class Index extends Component
         ]);
 
         $this->resetForm();
-        $this->showModel = false;
+
+        $this->showModal = false;
+
         session()->flash('success', 'Kategori berhasil ditambahkan.');
     }
 
