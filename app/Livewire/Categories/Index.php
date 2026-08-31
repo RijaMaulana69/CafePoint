@@ -15,6 +15,8 @@ class Index extends Component
 
     public $showModal = false;
 
+    public $categoryId = null;
+
     protected $rules = [
         'name' => 'required|string|max:100',
         'description' => 'nullable|string',
@@ -28,27 +30,71 @@ class Index extends Component
         $this->showModal = true;
     }
 
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+
+        $this->categoryId = $category->id;
+        $this->name = $category->name;
+        $this->description = $category->description;
+        $this->is_active = $category->is_active;
+
+        $this->showModal = true;
+    }
+
+    public function delete($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        session()->flash('success', 'Kategori berhasil dihapus.');
+    }
+
     public function save()
     {
         $this->validate();
 
-        Category::create([
-            'name' => $this->name,
-            'description' => $this->description,
-            'is_active' => $this->is_active,
-        ]);
+        if ($this->categoryId) {
+
+            $category = Category::findOrFail($this->categoryId);
+
+            $category->update([
+                'name' => $this->name,
+                'description' => $this->description,
+                'is_active' => $this->is_active,
+            ]);
+
+            session()->flash(
+                'success',
+                'Kategori berhasil diperbarui.'
+            );
+
+        } else {
+
+            Category::create([
+                'name' => $this->name,
+                'description' => $this->description,
+                'is_active' => $this->is_active,
+            ]);
+
+            session()->flash(
+                'success',
+                'Kategori berhasil ditambahkan.'
+            );
+        }
 
         $this->resetForm();
 
         $this->showModal = false;
-
-        session()->flash('success', 'Kategori berhasil ditambahkan.');
     }
 
     private function resetForm()
     {
+        $this->categoryId = null;
+
         $this->name = '';
+
         $this->description = '';
+
         $this->is_active = true;
     }
 

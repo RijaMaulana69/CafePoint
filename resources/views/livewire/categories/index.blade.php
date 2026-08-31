@@ -1,5 +1,5 @@
 <div>
-    <div class="p-6">
+    <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold">
             Master Kategori
         </h1>
@@ -34,7 +34,8 @@
                         </td>
 
                         <td class="px-5 py-4 text-center">
-                            <button class="text-blue"> Edit </button>
+                            <button wire:click="edit({{ $category->id }})"
+                            class="text-blue-600 hover:text-blue-800"> Edit </button>
                             <button class="text-red"> Hapus </button>
                         </td>
                     </tr>
@@ -61,7 +62,7 @@
             <div class="flex items-center justify-between px-6 py-4 border-b">
 
                 <h2 class="text-xl font-semibold text-gray-800">
-                    Tambah Kategori
+                    {{ $categoryId ? 'Edit Kategori' : 'Tambah Kategori' }}
                 </h2>
 
                 <button
@@ -156,7 +157,7 @@
                     class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
 
                     <span wire:loading.remove>
-                        Simpan
+                        {{ $categoryId ? 'Update' : 'Simpan' }}
                     </span>
 
                     <span wire:loading>
