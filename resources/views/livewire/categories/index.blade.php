@@ -1,4 +1,10 @@
 <div>
+    @if (session()->has('success'))
+    <div class="mb-4 rounded-lg bg-green-100 px-4 py-3 text-green-700">
+        {{ session('success') }}
+    </div>
+    @endif
+    
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold">
             Master Kategori
@@ -36,7 +42,11 @@
                         <td class="px-5 py-4 text-center">
                             <button wire:click="edit({{ $category->id }})"
                             class="text-blue-600 hover:text-blue-800"> Edit </button>
-                            <button class="text-red"> Hapus </button>
+                            <button 
+                            wire:click="delete({{ $category->id }})"
+                            wire:confirm="Apakah Anda yakin ingin menghapus kategori ini?"
+                            class="text-red-600 hover:text-red-800"> Hapus 
+                            </button>
                         </td>
                     </tr>
 
