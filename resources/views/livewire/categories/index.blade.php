@@ -77,9 +77,8 @@
         dari
         {{ $categories->total() }}
         kategori
-    </div>>
-
     </div>
+
     <div class="mt-4">
         {{ $categories->links() }}
     </div>  
@@ -102,9 +101,7 @@
                 <button
                     wire:click="$set('showModal', false)"
                     class="text-gray-400 hover:text-gray-600 text-2xl">
-
                     &times;
-
                 </button>
 
             </div>
@@ -165,9 +162,7 @@
 
                     <label for="is_active"
                            class="text-sm text-gray-700">
-
                         Kategori Aktif
-
                     </label>
 
                 </div>
