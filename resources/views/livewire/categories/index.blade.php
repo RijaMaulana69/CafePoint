@@ -6,6 +6,15 @@
     @endif
     
     <div class="flex items-center justify-between mb-6">
+        <div class="mb-4">
+            <input
+                type="text"
+                wire:model="search"
+                wire:keyup="updateSearch"
+                placeholder="Cari kategori..."
+                class="w-full md:w-1/3 rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"> 
+
+        </div>
         <h1 class="text-3xl font-bold">
             Master Kategori
         </h1>
@@ -28,7 +37,7 @@
             <tbody>
                 @forelse ($categories as $category)
                     <tr class="border-t">
-                        <td class="px-5 py-4">{{ $loop->iteration }}</td>
+                        <td class="px-5 py-4">{{ ($categories->currentPage() - 1) * $categories->perPage() + $loop->iteration }}</td>
                         <td class="px-5 py-4 font-medium">{{ $category->name }}</td>
                         <td class="px-5 py-4">{{ $category->description }}</td>
                         <td class="px-5 py-4">
@@ -59,6 +68,21 @@
             </tbody>
         </table>
     </div>
+
+    <div class="mt-2 text-sm text-gray-500">
+        Menampilkan
+        {{ $categories->firstItem() }}
+        Sampai
+        {{ $categories->lastItem() }}
+        dari
+        {{ $categories->total() }}
+        kategori
+    </div>>
+
+    </div>
+    <div class="mt-4">
+        {{ $categories->links() }}
+    </div>  
 
     @if($showModal)
 

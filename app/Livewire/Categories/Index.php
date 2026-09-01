@@ -4,9 +4,12 @@ namespace App\Livewire\Categories;
 
 use App\Models\Category;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+
     public $name = '';
 
     public $description = '';
@@ -16,6 +19,8 @@ class Index extends Component
     public $showModal = false;
 
     public $categoryId = null;
+
+    public $search = '';
 
     protected $rules = [
         'name' => 'required|string|max:100',
@@ -100,8 +105,17 @@ class Index extends Component
 
     public function render()
     {
+        $query = Category::query();
+            if ($this->search) {
+                $query->where ('name', 'like', '%' , $this->search . '%');
+            }
         return view('livewire.categories.index', [
-            'categories' => Category::latest()->get(),
+            'categories' => $query->latest()->paginate(10),
         ])->layout('layouts.cafepoint');
+    }
+
+    public function updateSearch()
+    {
+        $this->resetPage();
     }
 }
