@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
-
+    
     public $name = '';
 
     public $description = '';
