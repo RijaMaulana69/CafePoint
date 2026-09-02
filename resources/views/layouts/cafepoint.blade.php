@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-100">
-    <div clas="flex h-screen">
+    <div class="flex h-screen">
         {{-- Sidebar --}}
         @include ('components.sidebar')
         <div class="flex flex-col flex-1 overflow-hidden">

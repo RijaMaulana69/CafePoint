@@ -107,7 +107,7 @@ class Index extends Component
     {
         $query = Category::query();
             if ($this->search) {
-                $query->where ('name', 'like', '%' , $this->search . '%');
+                $query->where ('name', 'like', '%' . $this->search . '%');
             }
         return view('livewire.categories.index', [
             'categories' => $query->latest()->paginate(10),
