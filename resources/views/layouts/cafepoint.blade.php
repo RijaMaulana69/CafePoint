@@ -13,7 +13,6 @@
         {{-- Sidebar --}}
         @include ('components.sidebar')
         <div class="flex flex-col flex-1 overflow-hidden">
-        
         {{-- Navbar --}}
          @include ('components.navbar')
          <main class="flex-1 overflow-y-auto p-6">

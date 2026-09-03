@@ -44,7 +44,7 @@
         </a>
 
         {{-- Customer --}}
-        <a href="#"
+        <a href="{{ route('customer') }}"
            class="flex items-center gap-3 px-4 py-3 rounded-xl transition duration-150 font-medium {{ request()->routeIs('customer*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-300 hover:bg-slate-800 hover:text-white' }}">
             <span>👥</span>
             <span>Customer</span>
