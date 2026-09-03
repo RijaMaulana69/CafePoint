@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Categories\Index as CategoryIndex;
 use App\Livewire\Products\Index as ProductIndex;
+use App\Livewire\Suppliers\Index as SupplierIndex;
 
 Route::view('/', 'welcome');
 
@@ -22,5 +23,9 @@ Route::get('/kategori', CategoryIndex::class)
 Route::get('/produk', ProductIndex::class)
     ->middleware(['auth'])
     ->name('produk');
+
+Route::get('/supplier', SupplierIndex::class)
+    ->middleware(['auth'])
+    ->name('supplier');
 
 require __DIR__.'/auth.php';

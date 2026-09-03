@@ -25,7 +25,7 @@
             Produk
         </a>
 
-        <a href="#"
+        <a href="{{ route('supplier') }}"
            class="block px-6 py-3 hover:bg-slate-800">
             Supplier
         </a>
