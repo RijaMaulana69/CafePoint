@@ -20,7 +20,7 @@
             Kategori
         </a>
 
-        <a href="#"
+        <a href="{{ route('produk') }}"
            class="block px-6 py-3 hover:bg-slate-800">
             Produk
         </a>
