@@ -50,6 +50,17 @@
             <span>Customer</span>
         </a>
 
-    </nav>
+        {{-- Section Transaksi --}}
+        <div class="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
+            Transaksi
+        </div>
 
+        {{-- POS Kasir --}}
+        <a href="{{ route('pos') }}"
+           class="flex items-center gap-3 px-4 py-3 rounded-xl transition duration-150 font-medium {{ request()->routeIs('pos') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-300 hover:bg-slate-800 hover:text-white' }}">
+            <span>🛒</span>
+            <span>Kasir / POS</span>
+        </a>
+
+    </nav>
 </aside>
